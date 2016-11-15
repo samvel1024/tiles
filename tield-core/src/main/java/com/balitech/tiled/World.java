@@ -1,14 +1,15 @@
 package com.balitech.tiled;
 
+import com.balitech.tiled.grid.Grid;
+
 /**
- * Created by Samvel Abrahamyanon 11/13/16.
+ * Created by Samvel Abrahamyan 11/13/16.
  */
 public class World {
 
-    private Player player;
+    private Grid grid;
+    private RotationHandler clickReactor;
 
-    public Player getPlayer(){
-        return player;
-    }
+
 
 }
