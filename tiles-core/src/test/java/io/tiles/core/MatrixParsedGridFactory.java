@@ -1,14 +1,14 @@
-package com.balitech.tiled;
+package io.tiles.core;
 
-import com.balitech.tiled.grid.Grid;
-import com.balitech.tiled.grid.GridFactory;
-import com.balitech.tiled.grid.cell.Cell;
-import com.balitech.tiled.grid.cell.CellShape;
+import io.tiles.core.grid.Grid;
+import io.tiles.core.grid.GridFactory;
+import io.tiles.core.grid.cell.Cell;
+import io.tiles.core.grid.cell.CellShape;
 
 /**
- * Created by Samvel Abrahamyanon 11/15/16.
+ * Created by Samvel Abrahamyan 11/15/16.
  */
-public class MatrixParsedGridFactory implements GridFactory{
+public class MatrixParsedGridFactory implements GridFactory {
 
     private int [][] config;
 

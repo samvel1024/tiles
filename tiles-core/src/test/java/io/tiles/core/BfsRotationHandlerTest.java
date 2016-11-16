@@ -1,7 +1,7 @@
-package com.balitech.tiled;
+package io.tiles.core;
 
-import com.balitech.tiled.grid.Grid;
-import com.balitech.tiled.grid.cell.Position;
+import io.tiles.core.grid.Grid;
+import io.tiles.core.grid.cell.Position;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,10 +11,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.balitech.tiled.grid.cell.Position.of;
+import static io.tiles.core.grid.cell.Position.of;
 
 /**
- * Created by Samvel Abrahamyanon 11/14/16.
+ * Created by Samvel Abrahamyan 11/14/16.
  */
 public class BfsRotationHandlerTest {
 

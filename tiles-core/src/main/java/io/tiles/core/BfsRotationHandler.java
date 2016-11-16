@@ -1,12 +1,12 @@
-package com.balitech.tiled;
+package io.tiles.core;
 
-import com.balitech.tiled.grid.Grid;
-import com.balitech.tiled.grid.cell.*;
+import io.tiles.core.grid.Grid;
+import io.tiles.core.grid.cell.*;
 
 import java.util.*;
 
 /**
- * Created by Samvel Abrahamyanon 11/14/16.
+ * Created by Samvel Abrahamyan 11/14/16.
  */
 public class BfsRotationHandler implements RotationHandler {
 

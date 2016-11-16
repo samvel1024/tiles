@@ -1,13 +1,13 @@
-package com.balitech.tiled.grid;
+package io.tiles.core.grid;
 
-import com.balitech.tiled.grid.cell.Cell;
-import com.balitech.tiled.grid.cell.CellShape;
-import com.balitech.tiled.grid.cell.Position;
+import io.tiles.core.grid.cell.Cell;
+import io.tiles.core.grid.cell.CellShape;
+import io.tiles.core.grid.cell.Position;
 
 import java.util.Random;
 
 /**
- * Created by Samvel Abrahamyanon 11/14/16.
+ * Created by Samvel Abrahamyan 11/14/16.
  */
 public class RandomGridFactory implements GridFactory{
 

@@ -1,4 +1,4 @@
-package com.balitech.tiled.grid.cell;
+package io.tiles.core.grid.cell;
 
 import java.util.*;
 
