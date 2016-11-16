@@ -13,16 +13,14 @@ public class RandomGridFactory implements GridFactory{
 
     private Position size;
     private Random random;
-    private CellShape shapes[];
 
-
-    public RandomGridFactory(Position size){
+    public RandomGridFactory(Position size, Random random){
         this.size = size;
-        this.random = new Random();
-        this.shapes = CellShape.values();
+        this.random = random;
     }
 
     public Grid create(){
+        CellShape [] shapes = CellShape.values();
         Cell[][] cells = new Cell[size.row()][size.col()];
         for (int r=0; r<size.row(); ++r){
             for (int c=0; c<size.col(); ++c){

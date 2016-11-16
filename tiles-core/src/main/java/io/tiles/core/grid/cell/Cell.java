@@ -16,12 +16,20 @@ public class Cell {
         return shape;
     }
 
+    public void setShape(CellShape shape){
+        this.shape = shape;
+    }
+
     public void rotateShape(){
         this.shape = shape.rotate();
     }
 
     public void setOwner(Player owner) {
         this.owner = owner;
+    }
+
+    public boolean isOwned(){
+        return getOwner() != null;
     }
 
     public Player getOwner() {

@@ -15,7 +15,7 @@ public class WorldImpl implements World {
 
     private Grid grid;
     private RotationHandler rotationHandler;
-    private PlayerRegistrar playerRegistrar;
+    private GridPlayerRegistrar gridPlayerRegistrar;
     private Set<Player> players = new HashSet<>();
 
     public WorldImpl(Grid grid, RotationHandler handler){
