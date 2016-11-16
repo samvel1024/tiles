@@ -16,10 +16,9 @@ import static io.tiles.core.grid.cell.Position.of;
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
-public class BfsRotationHandlerTest {
+public class DfsConnectionPathFinderTest {
 
-
-    private BfsRotationHandler handler = new BfsRotationHandler();
+    private DfsPathFinder handler = new DfsPathFinder();
     private Grid grid = new MatrixParsedGridFactory(new int[][]{
             {1, 4, 4, 1, 2},
             {5, 1, 2, 0, 5},
@@ -36,6 +35,7 @@ public class BfsRotationHandlerTest {
             of(3, 3),
             of(3, 2),
             of(2, 2),
+            of(1, 2),
             of(1, 1),
             of(2, 1),
             of(2, 0),
@@ -59,11 +59,10 @@ public class BfsRotationHandlerTest {
     }
 
     @Test
-    public void singleConnectionTest(){
+    public void singleConnectionTest() {
         List<Position> positions = handler.getConnectedPositions(grid, of(3, 4));
         Assert.assertEquals(1, positions.size());
         Assert.assertEquals(of(3, 4), positions.get(0));
     }
-
 
 }

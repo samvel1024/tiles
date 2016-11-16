@@ -11,16 +11,17 @@ import java.util.Set;
 /**
  * Created by Samvel Abrahamyan 11/16/16.
  */
-public class WorldImpl implements World {
+public class SimpleWorld implements World {
 
     private Grid grid;
-    private RotationHandler rotationHandler;
+    private ConnectionPathFinder connectionPathFinder;
     private GridPlayerRegistrar gridPlayerRegistrar;
     private Set<Player> players = new HashSet<>();
 
-    public WorldImpl(Grid grid, RotationHandler handler){
+    public SimpleWorld(Grid grid, ConnectionPathFinder handler, GridPlayerRegistrar gridPlayerRegistrar){
         this.grid = grid;
-        this.rotationHandler = handler;
+        this.connectionPathFinder = handler;
+        this.gridPlayerRegistrar = gridPlayerRegistrar;
     }
 
     @Override

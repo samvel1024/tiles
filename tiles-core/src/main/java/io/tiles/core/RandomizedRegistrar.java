@@ -6,23 +6,21 @@ import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
  * Created by Samvel Abrahamyan 11/16/16.
  */
-public class RandomizedRegistarar implements GridPlayerRegistrar {
+public class RandomizedRegistrar implements GridPlayerRegistrar {
 
     private Random generator;
     private int padding;
     private CellShape[][] pattern;
     private Position patternSize;
 
-    public RandomizedRegistarar(Random generator, int padding, CellShape[][] pattern) {
+    public RandomizedRegistrar(Random generator, int padding, CellShape[][] pattern) {
         this.generator = generator;
         this.padding = padding;
         this.pattern = pattern;
@@ -31,7 +29,7 @@ public class RandomizedRegistarar implements GridPlayerRegistrar {
 
 
     @Override
-    public void registerPlayer(Grid grid, Player player) {
+    public Set<Position> registerPlayer(Grid grid, Player player) {
         Optional<Position> proposedPosition = tryTo(
                 () -> generateRandomPosition(grid.getSize()),
                 (position) -> isAllFreeInRegion(grid, position),
@@ -41,16 +39,19 @@ public class RandomizedRegistarar implements GridPlayerRegistrar {
             throw new OutOfCellsException(player);
 
         Position leftUp = proposedPosition.get();
-
+        Set<Position> newPositions = new LinkedHashSet<>();
         for (int r = 0; r < pattern.length; r++) {
             for (int c = 0; c < pattern[r].length; c++) {
                 Position curr = leftUp.movedBy(Position.of(r, c));
+                if (!curr.isInside(grid.getSize()))
+                    continue;
                 Cell cell = grid.getCellAt(curr);
                 cell.setOwner(player);
                 cell.setShape(pattern[r][c]);
+                newPositions.add(curr);
             }
         }
-
+        return newPositions;
     }
 
 

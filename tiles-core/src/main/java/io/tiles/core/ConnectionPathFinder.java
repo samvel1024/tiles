@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
-public interface RotationHandler {
+public interface ConnectionPathFinder {
 
     List<Position> getConnectedPositions(Grid grid, Position position);
 

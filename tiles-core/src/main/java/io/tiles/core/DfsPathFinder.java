@@ -8,20 +8,20 @@ import java.util.*;
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
-public class BfsRotationHandler implements RotationHandler {
+public class DfsPathFinder implements ConnectionPathFinder {
 
 
-    public List<Position> getConnectedPositions(Grid grid, Position rotatePosition) {
+    public List<Position> getConnectedPositions(Grid grid, Position startingPosition) {
         Set<Position> visited = new HashSet<>();
-        Queue<QueueItem> queue = new LinkedList<>();
+        Stack<QueueItem> queue = new Stack<>();
         List<Position> connectedPositions = new ArrayList<>();
 
-        queue.add(getQueueItemForPosition(grid, rotatePosition));
-        visited.add(rotatePosition);
-        connectedPositions.add(rotatePosition);
+        queue.add(getQueueItemForPosition(grid, startingPosition));
+        visited.add(startingPosition);
+        connectedPositions.add(startingPosition);
 
         while (!queue.isEmpty()) {
-            QueueItem curr = queue.remove();
+            QueueItem curr = queue.pop();
             curr.shape.getConnectionDirections()
                     .stream()
                     .map(direction -> new ProposedPosition(
