@@ -1,15 +1,15 @@
-package io.tiles.core;
+package io.tiles.core.simpleworld;
 
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Position;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
 public interface ConnectionPathFinder {
 
-    List<Position> getConnectedPositions(Grid grid, Position position);
+    Set<Position> getConnectedPositions(Grid grid, Position position);
 
 }

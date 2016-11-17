@@ -1,9 +1,16 @@
-package io.tiles.core;
+package io.tiles.core.simpleworld.impl;
 
 import io.tiles.core.grid.Grid;
-import io.tiles.core.grid.cell.*;
+import io.tiles.core.grid.cell.Cell;
+import io.tiles.core.grid.cell.CellShape;
+import io.tiles.core.grid.cell.Direction;
+import io.tiles.core.grid.cell.Position;
+import io.tiles.core.simpleworld.ConnectionPathFinder;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.Stack;
 
 /**
  * Created by Samvel Abrahamyan 11/14/16.
@@ -11,10 +18,10 @@ import java.util.*;
 public class DfsPathFinder implements ConnectionPathFinder {
 
 
-    public List<Position> getConnectedPositions(Grid grid, Position startingPosition) {
+    public Set<Position> getConnectedPositions(Grid grid, Position startingPosition) {
         Set<Position> visited = new HashSet<>();
         Stack<QueueItem> queue = new Stack<>();
-        List<Position> connectedPositions = new ArrayList<>();
+        Set<Position> connectedPositions = new LinkedHashSet<>();
 
         queue.add(getQueueItemForPosition(grid, startingPosition));
         visited.add(startingPosition);
@@ -52,8 +59,7 @@ public class DfsPathFinder implements ConnectionPathFinder {
         return new QueueItem(
                 position,
                 cell,
-                cell.getShape(),
-                cell.getOwner()
+                cell.getShape()
         );
     }
 
@@ -72,13 +78,11 @@ public class DfsPathFinder implements ConnectionPathFinder {
         Position pos;
         Cell cell;
         CellShape shape;
-        Player owner;
 
-        public QueueItem(Position pos, Cell cell, CellShape shape, Player owner) {
+        public QueueItem(Position pos, Cell cell, CellShape shape) {
             this.pos = pos;
             this.cell = cell;
             this.shape = shape;
-            this.owner = owner;
         }
     }
 

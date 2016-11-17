@@ -8,12 +8,12 @@ public class Position {
     private int row;
     private int col;
 
-    public Position(int row, int col){
+    public Position(int row, int col) {
         this.row = row;
         this.col = col;
     }
 
-    public static Position of(int row, int col){
+    public static Position of(int row, int col) {
         return new Position(row, col);
     }
 
@@ -21,8 +21,8 @@ public class Position {
     public int row() {
         return row;
     }
-    
-    public boolean isInside(Position size){
+
+    public boolean isInside(Position size) {
         return this.row >= 0 && this.row < size.row && this.col >= 0 && this.col < size.col;
     }
 
@@ -30,7 +30,7 @@ public class Position {
         return col;
     }
 
-    public Position movedBy(Position pos){
+    public Position movedBy(Position pos) {
         return new Position(this.row + pos.row, this.col + pos.col);
     }
 

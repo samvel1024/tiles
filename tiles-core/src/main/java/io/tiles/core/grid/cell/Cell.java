@@ -8,7 +8,7 @@ public class Cell {
     private Player owner;
     private CellShape shape;
 
-    public Cell(CellShape shape){
+    public Cell(CellShape shape) {
         this.shape = shape;
     }
 
@@ -16,23 +16,23 @@ public class Cell {
         return shape;
     }
 
-    public void setShape(CellShape shape){
+    public void setShape(CellShape shape) {
         this.shape = shape;
     }
 
-    public void rotateShape(){
+    public void rotateShape() {
         this.shape = shape.rotate();
     }
 
-    public void setOwner(Player owner) {
-        this.owner = owner;
-    }
-
-    public boolean isOwned(){
+    public boolean isOwned() {
         return getOwner() != null;
     }
 
     public Player getOwner() {
         return owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
     }
 }

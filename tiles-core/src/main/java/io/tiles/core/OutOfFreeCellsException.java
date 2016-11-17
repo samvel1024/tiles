@@ -5,11 +5,11 @@ import io.tiles.core.grid.cell.Player;
 /**
  * Created by Samvel Abrahamyan 11/16/16.
  */
-public class OutOfCellsException extends RuntimeException {
+public class OutOfFreeCellsException extends RuntimeException {
 
     private Player player;
 
-    public OutOfCellsException(Player player){
+    public OutOfFreeCellsException(Player player) {
         super("Cannot find cells for player " + player);
         this.player = player;
     }

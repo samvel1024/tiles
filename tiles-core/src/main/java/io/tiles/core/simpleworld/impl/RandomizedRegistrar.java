@@ -1,10 +1,12 @@
-package io.tiles.core;
+package io.tiles.core.simpleworld.impl;
 
+import io.tiles.core.OutOfFreeCellsException;
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Cell;
 import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
+import io.tiles.core.simpleworld.GridPlayerRegistrar;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -27,6 +29,14 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
         this.patternSize = calculatePatternSize(pattern);
     }
 
+    private static <T> Optional<T> tryTo(Supplier<T> supplier, Predicate<T> predicate, int attempts) {
+        for (int count = 0; count < attempts; ++count) {
+            T object = supplier.get();
+            if (predicate.test(object))
+                return Optional.of(object);
+        }
+        return Optional.empty();
+    }
 
     @Override
     public Set<Position> registerPlayer(Grid grid, Player player) {
@@ -36,7 +46,7 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
                 calculateMaxAttemptCount(grid.getSize())
         );
         if (!proposedPosition.isPresent())
-            throw new OutOfCellsException(player);
+            throw new OutOfFreeCellsException(player);
 
         Position leftUp = proposedPosition.get();
         Set<Position> newPositions = new LinkedHashSet<>();
@@ -54,7 +64,6 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
         return newPositions;
     }
 
-
     private boolean isAllFreeInRegion(Grid grid, Position leftUp) {
         for (int r = leftUp.row() - padding; r < leftUp.row() + patternSize.row() + padding; ++r) {
             for (int c = leftUp.col() - padding; c < leftUp.col() + patternSize.col() + padding; ++c) {
@@ -67,7 +76,6 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
         }
         return true;
     }
-
 
     @Override
     public void unregisterPlayer(Grid grid, Player player) {
@@ -84,22 +92,12 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
         );
     }
 
-
     private Position generateRandomPosition(Position bound) {
         return Position.of(generator.nextInt(bound.row()), generator.nextInt(bound.col()));
     }
 
     private int calculateMaxAttemptCount(Position size) {
         return (size.row() * size.col()) / Math.min(patternSize.row(), patternSize.col());
-    }
-
-    private static <T> Optional<T> tryTo(Supplier<T> supplier, Predicate<T> predicate, int attempts) {
-        for (int count = 0; count < attempts; ++count) {
-            T object = supplier.get();
-            if (predicate.test(object))
-                return Optional.of(object);
-        }
-        return Optional.empty();
     }
 
 }

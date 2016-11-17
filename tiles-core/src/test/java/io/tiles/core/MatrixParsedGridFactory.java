@@ -10,26 +10,24 @@ import io.tiles.core.grid.cell.CellShape;
  */
 public class MatrixParsedGridFactory implements GridFactory {
 
-    private int [][] config;
+    private int[][] config;
 
-    public MatrixParsedGridFactory(int [][] config){
+    public MatrixParsedGridFactory(int[][] config) {
         this.config = config;
     }
 
     @Override
     public Grid create() {
 
-        Cell [][] cells = new Cell[config.length][config[0].length];
+        Cell[][] cells = new Cell[config.length][config[0].length];
         CellShape[] shapes = CellShape.values();
-        for (int i=0; i<config.length; ++i){
-            for (int j=0; j<config[0].length; ++j){
+        for (int i = 0; i < config.length; ++i) {
+            for (int j = 0; j < config[0].length; ++j) {
                 cells[i][j] = new Cell(shapes[config[i][j]]);
             }
         }
         return new Grid(cells);
     }
-
-
 
 
 }

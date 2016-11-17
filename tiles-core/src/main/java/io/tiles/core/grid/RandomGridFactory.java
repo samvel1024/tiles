@@ -9,21 +9,21 @@ import java.util.Random;
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
-public class RandomGridFactory implements GridFactory{
+public class RandomGridFactory implements GridFactory {
 
     private Position size;
     private Random random;
 
-    public RandomGridFactory(Position size, Random random){
+    public RandomGridFactory(Position size, Random random) {
         this.size = size;
         this.random = random;
     }
 
-    public Grid create(){
-        CellShape [] shapes = CellShape.values();
+    public Grid create() {
+        CellShape[] shapes = CellShape.values();
         Cell[][] cells = new Cell[size.row()][size.col()];
-        for (int r=0; r<size.row(); ++r){
-            for (int c=0; c<size.col(); ++c){
+        for (int r = 0; r < size.row(); ++r) {
+            for (int c = 0; c < size.col(); ++c) {
                 cells[r][c] = new Cell(shapes[random.nextInt(shapes.length)]);
             }
         }

@@ -4,6 +4,7 @@ import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
+import io.tiles.core.simpleworld.impl.RandomizedRegistrar;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -37,20 +38,22 @@ public class RandomizedRegistrarTest {
 
 
     @Test
-    public void testResponse(){
+    public void testResponse() {
         Grid grid = new MatrixParsedGridFactory(gridConfig).create();
-        Player player = new Player(){};
+        Player player = new Player() {
+        };
 
         Set<Position> positionSet = randomizedRegistrar.registerPlayer(grid, player);
 
-        positionSet.forEach(pos -> Assert.assertTrue(grid.getCellAt(pos).getOwner() == player ));
+        positionSet.forEach(pos -> Assert.assertTrue(grid.getCellAt(pos).getOwner() == player));
     }
 
     @Test
-    public void testPlayerPlacementAndFullRoom(){
+    public void testPlayerPlacementAndFullRoom() {
         mockedRandom.mock(Position.of(1, 2));
         Grid grid = new MatrixParsedGridFactory(gridConfig).create();
-        Player player = new Player(){};
+        Player player = new Player() {
+        };
 
         Set<Position> positionSet = randomizedRegistrar.registerPlayer(grid, player);
 
@@ -66,26 +69,28 @@ public class RandomizedRegistrarTest {
     }
 
     @Test
-    public void testNoCellLeft(){
+    public void testNoCellLeft() {
         mockedRandom.mock(Position.of(1, 2));
         Grid grid = new MatrixParsedGridFactory(gridConfig).create();
 
-        randomizedRegistrar.registerPlayer(grid, new Player(){});
+        randomizedRegistrar.registerPlayer(grid, new Player() {
+        });
 
         try {
-            randomizedRegistrar.registerPlayer(grid, new Player() {});
-            fail("Should throw OutOfCellsException");
-        }catch (OutOfCellsException e){
+            randomizedRegistrar.registerPlayer(grid, new Player() {
+            });
+            fail("Should throw OutOfFreeCellsException");
+        } catch (OutOfFreeCellsException e) {
             //expected
         }
     }
 
-    private class MockedRandom extends Random{
+    private class MockedRandom extends Random {
 
         private Queue<Position> queuedPositions = new LinkedList<>();
         private boolean rowWasRequested = false;
 
-        public MockedRandom mock(Position position){
+        public MockedRandom mock(Position position) {
             this.queuedPositions.add(position);
             return this;
         }

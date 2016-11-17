@@ -13,7 +13,7 @@ public class Grid {
     private Cell[][] cells;
     private Position size;
 
-    public Grid(Cell[][] cells){
+    public Grid(Cell[][] cells) {
         this.cells = cells;
         this.size = Position.of(cells.length, cells[0].length);
     }
@@ -22,7 +22,7 @@ public class Grid {
         return size;
     }
 
-    public Cell getCellAt(Position pos){
+    public Cell getCellAt(Position pos) {
         return this.cells[pos.row()][pos.col()];
     }
 

@@ -2,6 +2,7 @@ package io.tiles.core;
 
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Position;
+import io.tiles.core.simpleworld.impl.DfsPathFinder;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +17,7 @@ import static io.tiles.core.grid.cell.Position.of;
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
-public class DfsConnectionPathFinderTest {
+public class DfsPathFinderTest {
 
     private DfsPathFinder handler = new DfsPathFinder();
     private Grid grid = new MatrixParsedGridFactory(new int[][]{

@@ -1,6 +1,8 @@
 package io.tiles.core.grid.cell;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Created by Samvel Abrahamyan 11/14/16.
@@ -25,7 +27,7 @@ public enum CellShape {
         return this.connections.contains(dir1) && this.connections.contains(dir2);
     }
 
-    public Set<Direction> getConnectionDirections(){
+    public Set<Direction> getConnectionDirections() {
         return connections;
     }
 

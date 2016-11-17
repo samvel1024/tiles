@@ -1,4 +1,4 @@
-package io.tiles.core;
+package io.tiles.core.simpleworld;
 
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Player;
@@ -12,6 +12,7 @@ import java.util.Set;
 public interface GridPlayerRegistrar {
 
     Set<Position> registerPlayer(Grid grid, Player player);
+
     void unregisterPlayer(Grid grid, Player player);
 
 }
