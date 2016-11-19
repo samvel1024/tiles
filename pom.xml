@@ -25,6 +25,8 @@
 
     <modules>
         <module>tiles-core</module>
+        <module>tiles-room</module>
+        <module>tiles-socket</module>
     </modules>
 
     <dependencies>
