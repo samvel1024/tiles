@@ -6,9 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Samvel Abrahamyan 11/14/16.
@@ -43,7 +41,7 @@ public class DfsPathFinderTest {
     ));
 
     @Test
-    public void longestConnectionTest() throws IOException {
+    public void testLongestConnection() throws IOException {
         verifyLongestConnection(Position.of(0, 2));
         verifyLongestConnection(Position.of(0, 3));
         verifyLongestConnection(Position.of(1, 0));
@@ -56,7 +54,7 @@ public class DfsPathFinderTest {
     }
 
     @Test
-    public void singleConnectionTest() {
+    public void testSingleConnection() {
         Set<Position> positions = handler.getConnectedPositions(grid, Position.of(3, 4));
         Assert.assertEquals(1, positions.size());
         Assert.assertEquals(Position.of(3, 4), positions.iterator().next());

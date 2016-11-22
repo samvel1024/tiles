@@ -89,7 +89,7 @@ public class SimpleWorldTest {
 
 
     @Test
-    public void gamePlayTest() {
+    public void testGamePlay() {
 
         random.mock(Position.of(1, 0)).mock(Position.of(0, 3));
 
