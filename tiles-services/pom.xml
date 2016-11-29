@@ -9,24 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tiles-socket</artifactId>
+    <artifactId>tiles-services</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.tiles</groupId>
-            <artifactId>tiles-services</artifactId>
+            <artifactId>tiles-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>1.4.2.RELEASE</version>
-        </dependency>
-
-
-
-
+        <!--<dependency>-->
+            <!--<groupId>com.github.menacher</groupId>-->
+            <!--<artifactId>nadron</artifactId>-->
+            <!--<version>0.5</version>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>
