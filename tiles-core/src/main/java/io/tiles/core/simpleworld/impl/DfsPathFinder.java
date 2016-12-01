@@ -7,20 +7,17 @@ import io.tiles.core.grid.cell.Cell;
 import io.tiles.core.grid.cell.Position;
 import io.tiles.core.simpleworld.ConnectionPathFinder;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by Samvel Abrahamyan 11/14/16.
  */
 public class DfsPathFinder implements ConnectionPathFinder {
 
-
+    @Override
     public Set<Position> getConnectedPositions(Grid grid, Position startingPosition) {
         Set<Position> visited = new HashSet<>();
-        Stack<QueueItem> queue = new Stack<>();
+        Deque<QueueItem> queue = new ArrayDeque<>();
         Set<Position> connectedPositions = new LinkedHashSet<>();
 
         queue.add(getQueueItemForPosition(grid, startingPosition));

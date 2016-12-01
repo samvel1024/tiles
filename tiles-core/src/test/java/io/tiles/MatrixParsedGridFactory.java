@@ -1,4 +1,4 @@
-package io.tiles.core.simpleworld.impl;
+package io.tiles;
 
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.GridFactory;

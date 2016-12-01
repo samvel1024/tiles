@@ -1,4 +1,4 @@
-package io.tiles.service.impl;
+package io.tiles.service.impl.impl;
 
 import io.tiles.core.grid.GridFactory;
 import io.tiles.core.grid.cell.CellShape;
@@ -8,7 +8,7 @@ import io.tiles.core.simpleworld.impl.RandomizedRegistrar;
 import io.tiles.core.simpleworld.impl.SimpleConnectionHandler;
 import io.tiles.core.simpleworld.impl.SimpleWorld;
 import io.tiles.room.Room;
-import io.tiles.service.WorldFactory;
+import io.tiles.service.impl.WorldFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

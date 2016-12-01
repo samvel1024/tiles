@@ -1,5 +1,6 @@
 package io.tiles.core.simpleworld.impl;
 
+import io.tiles.MatrixParsedGridFactory;
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Player;

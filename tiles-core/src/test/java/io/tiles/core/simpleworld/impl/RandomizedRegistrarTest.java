@@ -1,5 +1,6 @@
 package io.tiles.core.simpleworld.impl;
 
+import io.tiles.MatrixParsedGridFactory;
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Player;
@@ -89,7 +90,7 @@ public class RandomizedRegistrarTest {
         private Queue<Position> queuedPositions = new LinkedList<>();
         private boolean rowWasRequested = false;
 
-        public MockedRandom mock(Position position) {
+        MockedRandom mock(Position position) {
             this.queuedPositions.add(position);
             return this;
         }
@@ -107,12 +108,5 @@ public class RandomizedRegistrarTest {
         }
     }
 
-    @Test
-    public void test(){
-        List<Integer> list = new ArrayList<>(10);
-        list.add(1);
-        Integer[] ints = list.toArray(new Integer[list.size()]);
-
-    }
 
 }

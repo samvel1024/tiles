@@ -1,5 +1,6 @@
 package io.tiles.core.simpleworld.impl;
 
+import io.tiles.MatrixParsedGridFactory;
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Position;
 import org.junit.Assert;
@@ -49,8 +50,7 @@ public class DfsPathFinderTest {
     }
 
     private void verifyLongestConnection(Position starting) {
-        Set<Position> positions = new HashSet<>(handler.getConnectedPositions(grid, starting));
-        Assert.assertEquals(expected, positions);
+        Assert.assertEquals(expected, handler.getConnectedPositions(grid, starting));
     }
 
     @Test

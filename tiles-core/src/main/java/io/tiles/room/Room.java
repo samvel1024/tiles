@@ -32,7 +32,7 @@ public class Room implements World {
     }
 
     @Override
-    public PlayerAddedResponse addPlayer(Player player) {
+    public PlayerAddedIntoRoomResponse addPlayer(Player player) {
         synchronized (mutex) {
             PlayerAddedResponse playerAddedResponse = world.addPlayer(player);
             players.add(player);

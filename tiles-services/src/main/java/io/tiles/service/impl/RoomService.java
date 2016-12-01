@@ -1,4 +1,4 @@
-package io.tiles.service;
+package io.tiles.service.impl;
 
 import io.tiles.core.TurnResponse;
 import io.tiles.core.grid.cell.Player;
@@ -10,7 +10,7 @@ import io.tiles.room.PlayerAddedIntoRoomResponse;
  */
 public interface RoomService {
 
-    void createRoom(Long Long);
+    Long createRoom(Position size);
 
     PlayerAddedIntoRoomResponse addPlayer(Long key, Player player);
 

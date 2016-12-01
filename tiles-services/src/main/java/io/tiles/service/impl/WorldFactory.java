@@ -1,4 +1,4 @@
-package io.tiles.service;
+package io.tiles.service.impl;
 
 import io.tiles.core.World;
 import io.tiles.core.grid.cell.Position;
