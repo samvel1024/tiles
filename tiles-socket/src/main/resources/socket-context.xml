@@ -10,5 +10,6 @@
     <import resource="services-context.xml"/>
     <context:annotation-config/>
     <context:component-scan base-package="io.tiles.socket"/>
+    <context:property-placeholder location="socket.properties" ignore-unresolvable="true"/>
 
 </beans>

@@ -8,10 +8,8 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="io.tiles.service"/>
+    <context:property-placeholder location="services.properties" ignore-unresolvable="true"/>
 
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="services.properties"/>
-    </bean>
 
     <bean class="io.tiles.core.grid.RandomGridFactory">
         <constructor-arg ref="random"/>

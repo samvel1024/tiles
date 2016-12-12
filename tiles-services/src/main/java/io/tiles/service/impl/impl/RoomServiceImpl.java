@@ -17,11 +17,11 @@ import org.springframework.stereotype.Service;
 public class RoomServiceImpl implements RoomService {
 
     private final RoomStoreService roomStoreService;
-    private final RoomFactory factory;
+    private final SimpleRoomFactory factory;
 
 
     @Autowired
-    public RoomServiceImpl(RoomStoreService roomStoreService, RoomFactory factory) {
+    public RoomServiceImpl(RoomStoreService roomStoreService, SimpleRoomFactory factory) {
         this.roomStoreService = roomStoreService;
         this.factory = factory;
     }

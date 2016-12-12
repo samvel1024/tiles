@@ -24,17 +24,13 @@
             <version>1.4.2.RELEASE</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
         <dependency>
-            <groupId>com.github.menacher</groupId>
-            <artifactId>nadron</artifactId>
-            <version>0.5</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.5.Final</version>
         </dependency>
+
 
     </dependencies>
 

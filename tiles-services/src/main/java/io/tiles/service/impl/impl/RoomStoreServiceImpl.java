@@ -31,7 +31,7 @@ public class RoomStoreServiceImpl implements RoomStoreService {
             Random random,
             @Value("${roomStoreService.roomIdFrom}") long roomIdFrom,
             @Value("${roomStoreService.roomIdTo}") long roomIdTo,
-            @Value("${oomStoreService.idSearchMaxTries}") int maxTries) {
+            @Value("${roomStoreService.idSearchMaxTries}") int maxTries) {
         this.random = random;
         this.roomIdFrom = roomIdFrom;
         this.roomIdTo = roomIdTo;

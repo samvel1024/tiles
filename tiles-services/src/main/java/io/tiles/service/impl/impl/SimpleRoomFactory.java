@@ -20,13 +20,13 @@ import static io.tiles.core.grid.cell.CellShape.*;
  * Created by Samvel Abrahamyan 11/27/16.
  */
 @Service
-public class RoomFactory implements WorldFactory {
+public class SimpleRoomFactory implements WorldFactory {
 
     private final GridFactory gridFactory;
     private final Random random;
 
     @Autowired
-    public RoomFactory(GridFactory gridFactory, Random random) {
+    public SimpleRoomFactory(GridFactory gridFactory, Random random) {
         this.gridFactory = gridFactory;
         this.random = random;
     }
