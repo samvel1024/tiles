@@ -19,9 +19,9 @@ public class RandomGridFactory implements GridFactory {
 
     public Grid create(Position size) {
         CellShape[] shapes = CellShape.values();
-        Cell[][] cells = new Cell[size.row()][size.col()];
-        for (int r = 0; r < size.row(); ++r) {
-            for (int c = 0; c < size.col(); ++c) {
+        Cell[][] cells = new Cell[size.row][size.col];
+        for (int r = 0; r < size.row; ++r) {
+            for (int c = 0; c < size.col; ++c) {
                 cells[r][c] = new Cell(shapes[random.nextInt(shapes.length)]);
             }
         }

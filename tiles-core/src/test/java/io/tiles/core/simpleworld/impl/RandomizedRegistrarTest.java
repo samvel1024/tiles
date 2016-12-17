@@ -102,9 +102,9 @@ public class RandomizedRegistrarTest {
 
             if (!rowWasRequested) {
                 rowWasRequested = true;
-                return queuedPositions.element().row();
+                return queuedPositions.element().row;
             }
-            return queuedPositions.remove().col();
+            return queuedPositions.remove().col;
         }
     }
 

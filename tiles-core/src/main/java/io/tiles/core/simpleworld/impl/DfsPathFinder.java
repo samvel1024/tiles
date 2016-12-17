@@ -62,8 +62,8 @@ public class DfsPathFinder implements ConnectionPathFinder {
 
 
     private static class ProposedPosition {
-        Position position;
-        Direction directionFromPrev;
+        final Position position;
+        final Direction directionFromPrev;
 
         public ProposedPosition(Position position, Direction directionFromPrev) {
             this.position = position;
@@ -72,9 +72,9 @@ public class DfsPathFinder implements ConnectionPathFinder {
     }
 
     private static class QueueItem {
-        Position pos;
-        Cell cell;
-        CellShape shape;
+        final Position pos;
+        final Cell cell;
+        final CellShape shape;
 
         public QueueItem(Position pos, Cell cell, CellShape shape) {
             this.pos = pos;

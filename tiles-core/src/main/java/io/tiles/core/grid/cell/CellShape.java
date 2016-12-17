@@ -2,6 +2,7 @@ package io.tiles.core.grid.cell;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -28,7 +29,7 @@ public enum CellShape {
     }
 
     public Set<Direction> getConnectionDirections() {
-        return connections;
+        return new HashSet<>(connections);
     }
 
     public CellShape rotate() {

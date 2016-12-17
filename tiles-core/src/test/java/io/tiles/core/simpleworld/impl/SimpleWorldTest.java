@@ -142,7 +142,7 @@ public class SimpleWorldTest {
 
 
     private int[][] extractIntMatrixConfig(Grid grid) {
-        int[][] config = new int[grid.getSize().row()][grid.getSize().col()];
+        int[][] config = new int[grid.getSize().row][grid.getSize().col];
 
         for (int r = 0; r < config.length; r++) {
             for (int c = 0; c < config[r].length; c++) {

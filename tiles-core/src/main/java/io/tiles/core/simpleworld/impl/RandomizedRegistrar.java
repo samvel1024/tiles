@@ -57,8 +57,8 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
     }
 
     private boolean isAllFreeInRegion(Grid grid, Position leftUp) {
-        for (int r = leftUp.row() - padding; r < leftUp.row() + patternSize.row() + padding; ++r) {
-            for (int c = leftUp.col() - padding; c < leftUp.col() + patternSize.col() + padding; ++c) {
+        for (int r = leftUp.row - padding; r < leftUp.row + patternSize.row + padding; ++r) {
+            for (int c = leftUp.col - padding; c < leftUp.col + patternSize.col + padding; ++c) {
                 Position currPos = Position.of(r, c);
                 if (!currPos.isInside(grid.getSize()))
                     continue;
@@ -85,11 +85,11 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
     }
 
     private Position generateRandomPosition(Position bound) {
-        return Position.of(generator.nextInt(bound.row() - patternSize.row()), generator.nextInt(bound.col() - patternSize.col()));
+        return Position.of(generator.nextInt(bound.row - patternSize.row), generator.nextInt(bound.col - patternSize.col));
     }
 
     private int calculateMaxAttemptCount(Position size) {
-        return (size.row() * size.col()) / Math.min(patternSize.row(), patternSize.col());
+        return (size.row * size.col) / Math.min(patternSize.row, patternSize.col);
     }
 
 }

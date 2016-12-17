@@ -5,8 +5,8 @@ package io.tiles.core.grid.cell;
  */
 public class Position {
 
-    private int row;
-    private int col;
+    public final int row;
+    public final int col;
 
     public Position(int row, int col) {
         this.row = row;
@@ -18,17 +18,11 @@ public class Position {
     }
 
 
-    public int row() {
-        return row;
-    }
 
     public boolean isInside(Position size) {
         return this.row >= 0 && this.row < size.row && this.col >= 0 && this.col < size.col;
     }
 
-    public int col() {
-        return col;
-    }
 
     public Position movedBy(Position pos) {
         return new Position(this.row + pos.row, this.col + pos.col);

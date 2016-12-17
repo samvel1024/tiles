@@ -23,7 +23,7 @@ public class Grid {
     }
 
     public Cell getCellAt(Position pos) {
-        return this.cells[pos.row()][pos.col()];
+        return this.cells[pos.row][pos.col];
     }
 
     @Override

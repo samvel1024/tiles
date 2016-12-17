@@ -24,7 +24,7 @@ public class MockedRandom extends Random {
         if (queuedPositions.isEmpty())
             return super.nextInt(bound);
 
-        int ans = rowWasRequested ? queuedPositions.remove().col() : queuedPositions.element().row();
+        int ans = rowWasRequested ? queuedPositions.remove().col : queuedPositions.element().row;
         rowWasRequested = !rowWasRequested;
         return ans;
     }
