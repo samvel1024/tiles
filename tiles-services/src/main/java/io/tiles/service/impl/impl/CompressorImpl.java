@@ -9,27 +9,40 @@ import io.tiles.service.impl.Compressor;
  */
 public class CompressorImpl implements Compressor {
 
-    private final Position size;
+    private final long nearestCol;
+
 
     public CompressorImpl(Position size){
-        this.size = size;
+        this.nearestCol = nextBinaryPow(size.col);
     }
 
     @Override
     public String encodeResponse(TurnResponse response) {
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(encodePosition(response.getRotatedPosition()));
+        response.getChownedPostions().stream().map(this::encodePosition).forEach(stringBuilder::append);
+        return stringBuilder.toString();
     }
 
     @Override
     public Position decodeRequest(String str) {
-        return null;
+        long code = str.charAt(0);
+        return Position.of((int) (code % nearestCol), (int) (code / nearestCol));
     }
 
-    public long encodePosition(Position pos){
+    private char encodePosition(Position pos){
         long  res = pos.row;
-//        res *= nearestC;
-//        res += col;
-        return res;
+        res *= nearestCol;
+        res += pos.col;
+        return (char) res;
     }
+
+    private long nextBinaryPow(long n){
+        long ans = 1;
+        while(ans <= n)
+            ans *= 2;
+        return ans;
+    }
+
 }
 

@@ -126,7 +126,7 @@ public class SimpleWorldTest {
 
         //Run turns
         responsePerTurn.forEach((turn) -> {
-            Set<Position> response = world.turn(turn.position, turn.player).getChownedPostions();
+            List<Position> response = world.turn(turn.position, turn.player).getChownedPostions();
             Assert.assertEquals(turn.response, response);
             response.forEach(pos -> assertTrue(grid.getCellAt(pos).isOwnedBy(turn.player)));
         });

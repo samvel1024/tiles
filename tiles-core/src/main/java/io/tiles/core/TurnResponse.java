@@ -2,7 +2,7 @@ package io.tiles.core;
 
 import io.tiles.core.grid.cell.Position;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by Samvel Abrahamyan 11/16/16.
@@ -11,9 +11,9 @@ public class TurnResponse {
 
     private Position rotatedPosition;
 
-    private Set<Position> chownedPositions;
+    private List<Position> chownedPositions;
 
-    public TurnResponse(Position rotatedPosition, Set<Position> chownedPositions) {
+    public TurnResponse(Position rotatedPosition, List<Position> chownedPositions) {
         this.rotatedPosition = rotatedPosition;
         this.chownedPositions = chownedPositions;
     }
@@ -22,7 +22,7 @@ public class TurnResponse {
         return rotatedPosition;
     }
 
-    public Set<Position> getChownedPostions() {
+    public List<Position> getChownedPostions() {
         return chownedPositions;
     }
 }
