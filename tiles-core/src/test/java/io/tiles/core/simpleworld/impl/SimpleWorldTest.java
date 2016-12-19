@@ -157,16 +157,16 @@ public class SimpleWorldTest {
     public static class TurnItem {
         Player player;
         Position position;
-        Set<Position> response;
+        List<Position> response;
 
-        public TurnItem(Player player, Position position, Set<Position> response) {
+        public TurnItem(Player player, Position position, List<Position> response) {
             this.player = player;
             this.position = position;
             this.response = response;
         }
 
         public static TurnItem turn(Player player, Position position, List<Position> response){
-            return new TurnItem(player, position, new HashSet<>(response));
+            return new TurnItem(player, position, new ArrayList<>(response));
         }
 
     }
