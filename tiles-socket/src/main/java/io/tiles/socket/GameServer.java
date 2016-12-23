@@ -6,11 +6,13 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.tiles.socket.parser.EventParserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Collections;
 
 /**
  * Created by Samvel Abrahamyan 12/12/16.
@@ -37,7 +39,7 @@ public class GameServer {
             ServerBootstrap bootstrap = new ServerBootstrap()
                     .group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChatServerInitializer());
+                    .childHandler(channelInitializer);
 
             bootstrap.bind(port).sync().channel().closeFuture().sync();
         } catch (InterruptedException e) {
@@ -49,7 +51,7 @@ public class GameServer {
     }
 
     public static void main(String[] args) {
-        new GameServer(3000, new ChatServerInitializer()).run();
+        new GameServer(3000, new ChatServerInitializer(new EventParserMapper(Collections.emptyList()))).run();
     }
 
 }

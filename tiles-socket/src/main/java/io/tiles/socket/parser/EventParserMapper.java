@@ -1,4 +1,4 @@
-package io.tiles.socket;
+package io.tiles.socket.parser;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ public class EventParserMapper {
 
     private Map<String, EventParser<?>> eventHandlers;
 
-    public EventParserMapper(@Autowired List<EventParser<?>> eventParsers) {
+    public EventParserMapper(@Autowired List<? extends EventParser> eventParsers) {
         eventHandlers = new HashMap<>();
         eventParsers.forEach(parser -> {
             String key = parser.getKey();

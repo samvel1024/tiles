@@ -12,4 +12,11 @@
     <context:component-scan base-package="io.tiles.socket"/>
     <context:property-placeholder location="socket.properties" ignore-unresolvable="true"/>
 
+
+    <bean class="io.tiles.socket.parser.JsonEventParser" name="registrationEventParser">
+        <constructor-arg value="R"/>
+        <constructor-arg ref="objectMapper"/>
+        <constructor-arg type="java.lang.Class" value="io.tiles.socket.dto.RegistrationRequestDto"/>
+    </bean>
+
 </beans>

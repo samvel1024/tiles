@@ -37,10 +37,7 @@ public class RandomizedRegistrar implements GridPlayerRegistrar {
                 (position) -> isAllFreeInRegion(grid, position),
                 calculateMaxAttemptCount(grid.getSize())
         );
-        if (!proposedPosition.isPresent())
-            throw new OutOfFreeCellsException(player);
-
-        Position leftUp = proposedPosition.get();
+        Position leftUp = proposedPosition.orElseThrow(() -> new OutOfFreeCellsException(player));
         Set<Position> newPositions = new LinkedHashSet<>();
         for (int r = 0; r < pattern.length; r++) {
             for (int c = 0; c < pattern[r].length; c++) {

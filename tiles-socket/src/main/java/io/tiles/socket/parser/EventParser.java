@@ -1,4 +1,4 @@
-package io.tiles.socket;
+package io.tiles.socket.parser;
 
 /**
  * Created by Samvel Abrahamyan 12/16/16.
@@ -11,7 +11,7 @@ public abstract class EventParser<E> {
         this.key = key;
     }
 
-    abstract E parse(String event);
+    public abstract E parse(String event);
 
     public String getKey(){
         return key;

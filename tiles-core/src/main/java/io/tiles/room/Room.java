@@ -16,7 +16,6 @@ import java.util.Set;
 public class Room implements World {
 
     private World world;
-    private String name;
     private Set<Player> players = new LinkedHashSet<>();
     private final Object mutex = new Object();
 
