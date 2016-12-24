@@ -13,6 +13,8 @@
     <context:property-placeholder location="socket.properties" ignore-unresolvable="true"/>
 
 
+    <bean class="com.fasterxml.jackson.databind.ObjectMapper" name="objectMapper"/>
+
     <bean class="io.tiles.socket.parser.JsonEventParser" name="registrationEventParser">
         <constructor-arg value="R"/>
         <constructor-arg ref="objectMapper"/>
