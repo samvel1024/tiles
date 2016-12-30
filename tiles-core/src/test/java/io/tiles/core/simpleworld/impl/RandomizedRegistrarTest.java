@@ -49,7 +49,7 @@ public class RandomizedRegistrarTest {
     }
 
     @Test
-    public void testPlayerPlacementAndFullRoom() {
+    public void testPlayerPlacementAndFullWorld() {
         mockedRandom.mock(Position.of(1, 2));
         Grid grid = new MatrixParsedGridFactory(gridConfig).create();
         Player player = new Player() {

@@ -1,6 +1,6 @@
 package io.tiles.service.impl;
 
-import io.tiles.core.TurnResponse;
+import io.tiles.core.Turn;
 import io.tiles.core.grid.cell.Position;
 import io.tiles.service.impl.impl.CompressorHelper;
 import io.tiles.service.impl.impl.CompressorImpl;
@@ -32,7 +32,7 @@ public class CompressorImplTest {
         Assert.assertEquals(clientRequestDto, serverRequestDto);
 
         //response from server
-        TurnResponse serverResponseDto = new TurnResponse(
+        Turn serverResponseDto = new Turn(
                 Position.of(
                         random.nextInt(size.row),
                         random.nextInt(size.col)
@@ -45,7 +45,7 @@ public class CompressorImplTest {
                         .collect(Collectors.toList())
         );
         String responseString = server.encodeResponse(serverResponseDto);
-        TurnResponse clientResponseDto = client.decodeResponse(responseString);
+        Turn clientResponseDto = client.decodeResponse(responseString);
         Assert.assertEquals(serverResponseDto, clientResponseDto);
     }
 
@@ -63,14 +63,14 @@ public class CompressorImplTest {
             return "" + helper.encodePosition(pos);
         }
 
-        public TurnResponse decodeResponse(String response) {
+        public Turn decodeResponse(String response) {
             Position turnedPos = helper.decodePosition(response.charAt(0));
             List<Position> positions = new ArrayList<>();
             for (int i = 1; i < response.length(); ++i) {
                 positions.add(helper.decodePosition(response.charAt(i)));
             }
 
-            return new TurnResponse(turnedPos, positions);
+            return new Turn(turnedPos, positions);
 
         }
 

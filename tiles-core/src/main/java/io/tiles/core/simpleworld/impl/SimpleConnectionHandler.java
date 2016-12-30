@@ -1,6 +1,6 @@
 package io.tiles.core.simpleworld.impl;
 
-import io.tiles.core.TurnResponse;
+import io.tiles.core.Turn;
 import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Cell;
 import io.tiles.core.grid.cell.Player;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 public class SimpleConnectionHandler implements TurnConnectionHandler {
     @Override
-    public TurnResponse handleConnectionPath(Grid grid, Set<Position> connections, Player player, Position initial) {
+    public Turn handleConnectionPath(Grid grid, Set<Position> connections, Player player, Position initial) {
         List<Position> chownedPositions = connections.stream()
                 .filter(pos -> {
                     Cell cell = grid.getCellAt(pos);
@@ -27,6 +27,6 @@ public class SimpleConnectionHandler implements TurnConnectionHandler {
                     return isOwnedByOther;
                 })
                 .collect(Collectors.toList());
-        return new TurnResponse(initial, chownedPositions);
+        return new Turn(initial, chownedPositions);
     }
 }

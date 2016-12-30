@@ -7,7 +7,7 @@ import io.tiles.core.simpleworld.impl.DfsPathFinder;
 import io.tiles.core.simpleworld.impl.RandomizedRegistrar;
 import io.tiles.core.simpleworld.impl.SimpleConnectionHandler;
 import io.tiles.core.simpleworld.impl.SimpleWorld;
-import io.tiles.room.Room;
+import io.tiles.core.SynchronizedWorld;
 import io.tiles.service.impl.WorldFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,20 +20,20 @@ import static io.tiles.core.grid.cell.CellShape.*;
  * Created by Samvel Abrahamyan 11/27/16.
  */
 @Service
-public class SimpleRoomFactory implements WorldFactory {
+public class SimpleWorldFactory implements WorldFactory {
 
     private final GridFactory gridFactory;
     private final Random random;
 
     @Autowired
-    public SimpleRoomFactory(GridFactory gridFactory, Random random) {
+    public SimpleWorldFactory(GridFactory gridFactory, Random random) {
         this.gridFactory = gridFactory;
         this.random = random;
     }
 
     @Override
-    public Room create(Position size) {
-        return new Room(
+    public SynchronizedWorld create(Position size) {
+        return new SynchronizedWorld(
                 new SimpleWorld(
                         gridFactory.create(size),
                         new DfsPathFinder(),

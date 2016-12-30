@@ -1,7 +1,7 @@
 package io.tiles.core.simpleworld.impl;
 
-import io.tiles.core.PlayerAddedResponse;
-import io.tiles.core.TurnResponse;
+import io.tiles.core.PlayerAdded;
+import io.tiles.core.Turn;
 import io.tiles.core.UnauthorizedTurnException;
 import io.tiles.core.World;
 import io.tiles.core.grid.Grid;
@@ -35,7 +35,7 @@ public class SimpleWorld implements World {
     }
 
     @Override
-    public TurnResponse turn(Position position, Player player) {
+    public Turn makeTurn(Position position, Player player) {
         if (!this.isPositionOwnedByPlayer(position, player)) {
             throw new UnauthorizedTurnException();
         }
@@ -49,15 +49,15 @@ public class SimpleWorld implements World {
     }
 
     @Override
-    public PlayerAddedResponse addPlayer(Player player) {
-        return new PlayerAddedResponse(
+    public PlayerAdded addPlayer(Player player) {
+        return new PlayerAdded(
                 gridPlayerRegistrar.registerPlayer(grid, player),
                 player
         );
     }
 
     @Override
-    public void removePlayer() {
+    public void removePlayer(Player pl) {
         throw new UnsupportedOperationException("Not implemented");
     }
 

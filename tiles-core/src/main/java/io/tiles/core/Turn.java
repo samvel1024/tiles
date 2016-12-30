@@ -7,13 +7,13 @@ import java.util.List;
 /**
  * Created by Samvel Abrahamyan 11/16/16.
  */
-public class TurnResponse {
+public class Turn {
 
     private Position rotatedPosition;
 
     private List<Position> chownedPositions;
 
-    public TurnResponse(Position rotatedPosition, List<Position> chownedPositions) {
+    public Turn(Position rotatedPosition, List<Position> chownedPositions) {
         this.rotatedPosition = rotatedPosition;
         this.chownedPositions = chownedPositions;
     }
@@ -31,7 +31,7 @@ public class TurnResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TurnResponse that = (TurnResponse) o;
+        Turn that = (Turn) o;
 
         if (rotatedPosition != null ? !rotatedPosition.equals(that.rotatedPosition) : that.rotatedPosition != null)
             return false;
@@ -48,7 +48,7 @@ public class TurnResponse {
 
     @Override
     public String toString() {
-        return "TurnResponse{" +
+        return "Turn{" +
                 "rotatedPosition=" + rotatedPosition +
                 ", chownedPositions=" + chownedPositions +
                 '}';

@@ -1,6 +1,6 @@
 package io.tiles.service.impl;
 
-import io.tiles.core.TurnResponse;
+import io.tiles.core.Turn;
 import io.tiles.core.grid.cell.Position;
 
 /**
@@ -8,7 +8,7 @@ import io.tiles.core.grid.cell.Position;
  */
 public interface Compressor {
 
-    String encodeResponse(TurnResponse response);
+    String encodeResponse(Turn response);
     Position decodeRequest(String str);
 
 }

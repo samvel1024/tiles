@@ -1,12 +1,12 @@
 package io.tiles.service.impl;
 
-import io.tiles.core.PlayerAddedResponse;
-import io.tiles.core.TurnResponse;
+import io.tiles.core.PlayerAdded;
+import io.tiles.core.SynchronizedWorld;
+import io.tiles.core.Turn;
 import io.tiles.core.World;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
-import io.tiles.room.Room;
-import io.tiles.service.impl.impl.RoomStoreServiceImpl;
+import io.tiles.service.impl.impl.WorldStoreImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,61 +19,62 @@ import java.util.stream.IntStream;
 /**
  * Created by Samvel Abrahamyan 12/1/16.
  */
-public class RoomStoreServiceImplTest {
+public class WorldStoreImplTest {
 
     private Random random = new Random();
     private long idFrom = 100;
     private long idTo = 200;
-    private RoomStoreService roomStoreService;
+    private WorldStore<World> worldStore;
 
     @Before
     public void init() {
-        roomStoreService = new RoomStoreServiceImpl(random, idFrom, idTo, 10000);
+        worldStore = new WorldStoreImpl(random, idFrom, idTo, 10000);
     }
 
 
     @Test
-    public void testRoomRetrieval() {
+    public void testWorldRetrieval() {
 
-        Room room = new Room(new World() {
+        SynchronizedWorld world = new SynchronizedWorld(new World() {
+
             @Override
-            public TurnResponse turn(Position position, Player byPlayer) {
+            public Turn makeTurn(Position position, Player byPlayer) {
                 return null;
             }
 
             @Override
-            public PlayerAddedResponse addPlayer(Player player) {
+            public PlayerAdded addPlayer(Player player) {
                 return null;
             }
 
             @Override
-            public void removePlayer() {
+            public void removePlayer(Player pl) {
 
             }
         });
 
-        long id = roomStoreService.putRoom(room);
+        long id = worldStore.putWorld(world);
 
-        Assert.assertSame(room, roomStoreService.getRoom(id));
+        Assert.assertSame(world, worldStore.getWorld(id));
     }
 
     @Test(expected = ServerFullException.class)
     public void testServerFull() {
         Set<Long> existingIds = new HashSet<>();
         IntStream.range(0, (int) (idTo - idFrom)+1).forEach((i) -> {
-            long id = roomStoreService.putRoom(new Room(new World() {
+            long id = worldStore.putWorld(new SynchronizedWorld(new World() {
                 @Override
-                public TurnResponse turn(Position position, Player byPlayer) {
+                public Turn makeTurn(Position position, Player byPlayer) {
                     return null;
                 }
 
                 @Override
-                public PlayerAddedResponse addPlayer(Player player) {
+                public PlayerAdded addPlayer(Player player) {
                     return null;
                 }
 
                 @Override
-                public void removePlayer() {
+                public void removePlayer(Player pl) {
 
                 }
             }));
@@ -83,9 +84,9 @@ public class RoomStoreServiceImplTest {
         });
     }
 
-    @Test(expected = RoomNotFoundException.class)
+    @Test(expected = WorldNotFoundException.class)
     public void testWrongIdRetrieval(){
-        roomStoreService.getRoom(0L);
+        worldStore.getWorld(0L);
     }
 
 }

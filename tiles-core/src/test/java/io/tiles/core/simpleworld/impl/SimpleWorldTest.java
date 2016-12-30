@@ -5,7 +5,7 @@ import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.OutOfFreeCellsException;
-import io.tiles.core.PlayerAddedResponse;
+import io.tiles.core.PlayerAdded;
 import io.tiles.core.UnauthorizedTurnException;
 import io.tiles.core.World;
 import io.tiles.core.grid.cell.Position;
@@ -94,8 +94,8 @@ public class SimpleWorldTest {
 
         random.mock(Position.of(1, 0)).mock(Position.of(0, 3));
 
-        PlayerAddedResponse player1Added = world.addPlayer(player1);
-        PlayerAddedResponse player2Added = world.addPlayer(player2);
+        PlayerAdded player1Added = world.addPlayer(player1);
+        PlayerAdded player2Added = world.addPlayer(player2);
 
         Assert.assertEquals(new HashSet<>(Arrays.asList(
                 Position.of(1, 0),
@@ -126,13 +126,13 @@ public class SimpleWorldTest {
 
         //Run turns
         responsePerTurn.forEach((turn) -> {
-            List<Position> response = world.turn(turn.position, turn.player).getChownedPostions();
+            List<Position> response = world.makeTurn(turn.position, turn.player).getChownedPostions();
             Assert.assertEquals(turn.response, response);
             response.forEach(pos -> assertTrue(grid.getCellAt(pos).isOwnedBy(turn.player)));
         });
 
         try {
-            world.turn(Position.of(1, 0), player1);
+            world.makeTurn(Position.of(1, 0), player1);
             fail("Should throw UnauthorizedTurnException");
         } catch (UnauthorizedTurnException e) {
             //expected

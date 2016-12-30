@@ -8,10 +8,10 @@ import io.tiles.core.grid.cell.Position;
  */
 public interface World {
 
-    TurnResponse turn(Position position, Player byPlayer);
+    Turn makeTurn(Position position, Player byPlayer);
 
-    PlayerAddedResponse addPlayer(Player player);
+    PlayerAdded addPlayer(Player player);
 
-    void removePlayer();
+    void removePlayer(Player player);
 
 }

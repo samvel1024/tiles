@@ -1,6 +1,6 @@
 package io.tiles.service.impl.impl;
 
-import io.tiles.core.TurnResponse;
+import io.tiles.core.Turn;
 import io.tiles.core.grid.cell.Position;
 import io.tiles.service.impl.Compressor;
 
@@ -16,7 +16,7 @@ public class CompressorImpl implements Compressor {
     }
 
     @Override
-    public String encodeResponse(TurnResponse response) {
+    public String encodeResponse(Turn response) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(helper.encodePosition(response.getRotatedPosition()));
         response.getChownedPostions().stream().map(helper::encodePosition).forEach(stringBuilder::append);
