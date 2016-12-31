@@ -9,10 +9,15 @@ public class RegistrationRequestDto {
 
     public final String name;
     public final long roomId;
+    public final String color;
 
-    public RegistrationRequestDto(@JsonProperty("name")  String name, @JsonProperty("roomId") long roomId) {
+    public RegistrationRequestDto(
+            @JsonProperty("name") String name,
+            @JsonProperty("roomId") long roomId,
+            @JsonProperty("color") String color) {
         this.name = name;
         this.roomId = roomId;
+        this.color = color;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package io.tiles.service.impl.impl;
 
+import io.tiles.core.SynchronizedWorld;
 import io.tiles.core.grid.GridFactory;
 import io.tiles.core.grid.cell.CellShape;
 import io.tiles.core.grid.cell.Position;
@@ -7,9 +8,7 @@ import io.tiles.core.simpleworld.impl.DfsPathFinder;
 import io.tiles.core.simpleworld.impl.RandomizedRegistrar;
 import io.tiles.core.simpleworld.impl.SimpleConnectionHandler;
 import io.tiles.core.simpleworld.impl.SimpleWorld;
-import io.tiles.core.SynchronizedWorld;
 import io.tiles.service.impl.WorldFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -25,7 +24,6 @@ public class SimpleWorldFactory implements WorldFactory {
     private final GridFactory gridFactory;
     private final Random random;
 
-    @Autowired
     public SimpleWorldFactory(GridFactory gridFactory, Random random) {
         this.gridFactory = gridFactory;
         this.random = random;

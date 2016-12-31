@@ -25,13 +25,11 @@ public class CompressorHelper {
         return Position.of((code / nearest), (code % nearest));
     }
 
-
     private int nextBinaryPow(int n) {
         int ans = 1;
         while (ans <= n)
             ans *= 2;
         return ans;
     }
-
 
 }

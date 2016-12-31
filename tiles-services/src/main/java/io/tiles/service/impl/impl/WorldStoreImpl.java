@@ -2,10 +2,9 @@ package io.tiles.service.impl.impl;
 
 import io.tiles.core.Helper;
 import io.tiles.core.World;
-import io.tiles.service.impl.WorldNotFoundException;
 import io.tiles.service.impl.ServerFullException;
+import io.tiles.service.impl.WorldNotFoundException;
 import io.tiles.service.impl.WorldStore;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +17,14 @@ import java.util.Random;
  * Created by Samvel Abrahamyan 11/27/16.
  */
 @Service
-public class WorldStoreImpl implements WorldStore<World> {
+public class WorldStoreImpl<T extends World> implements WorldStore<T> {
 
-    private final Map<Long, World> worldStore;
+    private final Map<Long, T> worldStore;
     private final Random random;
     private final long worldIdFrom;
     private final long worldIdTo;
     private final int maxTries;
 
-    @Autowired
     public WorldStoreImpl(
             Random random,
             @Value("${worldStoreService.worldIdFrom}") long worldIdFrom,
@@ -41,7 +39,7 @@ public class WorldStoreImpl implements WorldStore<World> {
 
 
     @Override
-    public Long putWorld(World world) {
+    public Long putWorld(T world) {
         Optional<Long> tryTo = Helper.tryTo(
                 this::randomLong,
                 id -> !worldStore.containsKey(id),
@@ -53,8 +51,8 @@ public class WorldStoreImpl implements WorldStore<World> {
     }
 
     @Override
-    public World getWorld(Long id) {
-        World world = worldStore.get(id);
+    public T getWorld(Long id) {
+        T world = worldStore.get(id);
         if (world == null)
             throw new WorldNotFoundException();
         return world;
