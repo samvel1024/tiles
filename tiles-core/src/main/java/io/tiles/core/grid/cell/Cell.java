@@ -24,6 +24,11 @@ public class Cell {
         this.shape = shape.rotate();
     }
 
+    public Player getOwner(){
+        return owner;
+    }
+
+
     public boolean isOwned() {
         return owner != null;
     }

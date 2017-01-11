@@ -61,6 +61,11 @@ public class SimpleWorld implements World {
         throw new UnsupportedOperationException("Not implemented");
     }
 
+    @Override
+    public Grid getState() {
+        return grid;
+    }
+
     private boolean isPositionOwnedByPlayer(Position position, Player player) {
         return grid.getCellAt(position).isOwnedBy(player);
     }

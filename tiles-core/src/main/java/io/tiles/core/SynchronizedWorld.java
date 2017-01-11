@@ -1,5 +1,6 @@
 package io.tiles.core;
 
+import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
 
@@ -32,6 +33,11 @@ public class SynchronizedWorld implements World {
     @Override
     public void removePlayer(Player pl) {
         throw new UnsupportedOperationException("Not supported");
+    }
+
+    @Override
+    public Grid getState() {
+        return world.getState();
     }
 
 }

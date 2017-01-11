@@ -4,6 +4,7 @@ import io.tiles.core.PlayerAdded;
 import io.tiles.core.SynchronizedWorld;
 import io.tiles.core.Turn;
 import io.tiles.core.World;
+import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
 import io.tiles.service.impl.impl.WorldStoreImpl;
@@ -24,7 +25,7 @@ public class WorldStoreImplTest {
     private Random random = new Random();
     private long idFrom = 100;
     private long idTo = 200;
-    private WorldStore<World> worldStore;
+    private WorldStoreImpl worldStore;
 
     @Before
     public void init() {
@@ -51,6 +52,11 @@ public class WorldStoreImplTest {
             public void removePlayer(Player pl) {
 
             }
+
+            @Override
+            public Grid getState() {
+                return null;
+            }
         });
 
         long id = worldStore.putWorld(world);
@@ -76,6 +82,11 @@ public class WorldStoreImplTest {
                 @Override
                 public void removePlayer(Player pl) {
 
+                }
+
+                @Override
+                public Grid getState() {
+                    return null;
                 }
             }));
             Assert.assertFalse(existingIds.contains(id));

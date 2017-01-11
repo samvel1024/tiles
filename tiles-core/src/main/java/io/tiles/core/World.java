@@ -1,5 +1,6 @@
 package io.tiles.core;
 
+import io.tiles.core.grid.Grid;
 import io.tiles.core.grid.cell.Player;
 import io.tiles.core.grid.cell.Position;
 
@@ -14,4 +15,5 @@ public interface World {
 
     void removePlayer(Player player);
 
+    Grid getState();
 }

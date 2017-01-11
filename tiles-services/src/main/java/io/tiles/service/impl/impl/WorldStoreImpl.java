@@ -6,7 +6,7 @@ import io.tiles.service.impl.ServerFullException;
 import io.tiles.service.impl.WorldNotFoundException;
 import io.tiles.service.impl.WorldStore;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.Random;
 /**
  * Created by Samvel Abrahamyan 11/27/16.
  */
-@Service
+@Component
 public class WorldStoreImpl<T extends World> implements WorldStore<T> {
 
     private final Map<Long, T> worldStore;

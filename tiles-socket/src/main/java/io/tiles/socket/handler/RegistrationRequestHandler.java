@@ -26,6 +26,7 @@ public class RegistrationRequestHandler extends SimpleChannelInboundHandler<Regi
                 .setName(msg.name)
                 .setColor(msg.color)
                 .setRoom(room)
-                .setChannel(ctx.channel()));
+                .setChannel(ctx.channel())
+        );
     }
 }
